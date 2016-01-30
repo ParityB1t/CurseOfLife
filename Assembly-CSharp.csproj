@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Interaction\PlayerMovement.cs" />
+     <Compile Include="Assets\birdMovement.cs" />
      <Compile Include="Assets\engine.cs" />
      <Compile Include="Assets\miniMapBoundary.cs" />
  <Reference Include="UnityEngine.UI">

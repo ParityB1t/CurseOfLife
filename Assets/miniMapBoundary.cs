@@ -10,6 +10,6 @@ public class miniMapBoundary : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 }
