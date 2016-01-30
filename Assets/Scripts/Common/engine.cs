@@ -12,8 +12,7 @@ public class engine : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        GameObject playerInstance = Instantiate(player);
-        transform.SetParent(playerInstance.transform);
+        GameObject playerInstance = Instantiate(player);        
 
 	    GameObject inventoryInstance = Instantiate(Inventory);
         inventoryInstance.transform.SetParent(Canvas.transform);

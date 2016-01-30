@@ -51,4 +51,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    public float Speed()
+    {
+        return speed;
+    }
 }
