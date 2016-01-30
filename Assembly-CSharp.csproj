@@ -45,7 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryLogic.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryRenderer.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items_Common\Item.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items_Common\ItemDB.cs" />
+     <Compile Include="Assets\Scripts\Inventory\SlotLogic.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
