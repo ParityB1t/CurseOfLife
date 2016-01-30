@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BB08841D-B780-DAB6-1DB6-8B7A71A12089}</ProjectGuid>
+    <ProjectGuid>{E1B1B761-C711-90E3-3276-B015275D2C7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -38,21 +38,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryLogic.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryRenderer.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items_Common\Item.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items_Common\ItemDB.cs" />
+     <Compile Include="Assets\Scripts\Inventory\SlotLogic.cs" />
      <Compile Include="Assets\engine.cs" />
      <Compile Include="Assets\miniMapBoundary.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
