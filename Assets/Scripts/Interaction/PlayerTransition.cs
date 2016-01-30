@@ -41,7 +41,7 @@ public class PlayerTransition : MonoBehaviour
     IEnumerator moveCamera(Vector3 direction)
     {
         Vector3 moveCameraBy = Vector3.Scale(direction,sceneDimension);
-        Vector3 movePlayerBy = Vector3.Scale(direction,GetComponent<PlayerMovement>().Speed() * sceneDimension * 2.5f);
+        Vector3 movePlayerBy = Vector3.Scale(direction,GetComponent<PlayerMovement>().Speed() * sceneDimension * 1.5f);
 
         Vector3 cameraPosition = Camera.main.transform.position;
         Vector3 finalPosition = cameraPosition + moveCameraBy;
