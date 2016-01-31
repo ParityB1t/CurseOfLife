@@ -16,6 +16,7 @@ public class engine : MonoBehaviour {
     //environment
     public GameObject worldMap;
     public GameObject Walls;
+    public GameObject Initialitems;
         
     //heart
     public GameObject heart;
@@ -28,8 +29,10 @@ public class engine : MonoBehaviour {
 
         #region environment
 
-	   // Instantiate(worldMap);
-	  //  Instantiate(Walls, new Vector3(0, 12), Walls.transform.rotation);
+
+	    Instantiate(worldMap);
+	    Instantiate(Walls, new Vector3(0, 12), Walls.transform.rotation);
+	    Instantiate(Initialitems);
 
         #endregion
 
@@ -58,7 +61,8 @@ public class engine : MonoBehaviour {
 	    inventoryInstance.transform.localScale = Vector3.one;
         inventoryInstance.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100,inventoryInstance.transform.position.y);
        
-        playerInstance.GetComponent<PlayerInteraction>().Inventory = inventoryInstance;  
+        playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
+        
         inventoryInstance.SetActive(false);
 
         #endregion
