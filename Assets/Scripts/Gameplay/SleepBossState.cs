@@ -20,10 +20,10 @@ public class SleepBossState : MonoBehaviour
     {
         while (active)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.2f);
             looking = true;
             GetComponent<SpriteRenderer>().sprite = awake;
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(4.5f);
             GetComponent<SpriteRenderer>().sprite = sleep;
             looking = false;
         }

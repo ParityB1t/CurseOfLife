@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class StealthGameMode : MonoBehaviour
 {
@@ -17,18 +19,23 @@ public class StealthGameMode : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (!hidden)
+        if (col.tag != "boss")
         {
-            hidden = true;
+            if (!hidden)
+            {
+                hidden = true;
+            }
         }
-            
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (hidden)
+        if (col.tag != "boss")
         {
-            hidden = false;
+            if (hidden)
+            {
+                hidden = false;
+            }
         }
     }
 }
