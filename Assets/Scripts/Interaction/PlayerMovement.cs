@@ -2,7 +2,10 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+
     private float speed = 0.04f;
+    public bool canMove;
+
 
 	void Start () {
 	
@@ -11,45 +14,47 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-        /*float horizontal = Input.GetAxis("Horizontal");
-	    float vertical = Input.GetAxis("Vertical");
-
-	    if (horizontal < 0)
-	    {
-            transform.position -= new Vector3(speed, 0, 0);
-        }
-	    else
-	    {
-            transform.position += new Vector3(speed, 0, 0);
-        }
-
-        if (vertical < 0)
+        if (canMove)
         {
-            transform.position -= new Vector3(speed, 0, 0);
-        }
-        else
-        {
-            transform.position += new Vector3(speed, 0, 0);
-        }*/
+            /*float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.A))
-	    {
-            transform.position -= new Vector3(speed, 0, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(speed, 0, 0);
-        }
+            if (horizontal < 0)
+            {
+                transform.position -= new Vector3(speed, 0, 0);
+            }
+            else
+            {
+                transform.position += new Vector3(speed, 0, 0);
+            }
 
-	    if (Input.GetKey(KeyCode.W))
-	    {
-            transform.position += new Vector3(0, speed, 0);
-        }
-        else if (Input.GetKey(KeyCode.S))
-	    {
-            transform.position -= new Vector3(0, speed, 0);
-        }
+            if (vertical < 0)
+            {
+                transform.position -= new Vector3(speed, 0, 0);
+            }
+            else
+            {
+                transform.position += new Vector3(speed, 0, 0);
+            }*/
 
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position -= new Vector3(speed, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                transform.position += new Vector3(speed, 0, 0);
+            }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position += new Vector3(0, speed, 0);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                transform.position -= new Vector3(0, speed, 0);
+            }
+        }
     }
 
     public float Speed()
