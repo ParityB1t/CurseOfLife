@@ -10,13 +10,15 @@ public class engine : MonoBehaviour {
     public GameObject Inventory;
 
     public GameObject TextBoxManager;    
+
     
     //environment
     public GameObject worldMap;
     public GameObject Walls;
     public GameObject Initialitems;
         
-
+    //heart
+    public GameObject heart;
 
     // Bosses
     public GameObject sleepBoss;
@@ -25,6 +27,7 @@ public class engine : MonoBehaviour {
 	void Start () {
 
         #region environment
+
 
 	    Instantiate(worldMap);
 	    Instantiate(Walls, new Vector3(0, 11), Walls.transform.rotation);
@@ -36,11 +39,18 @@ public class engine : MonoBehaviour {
         
         GameObject textBoxManagerInstance = Instantiate(TextBoxManager);
 	    GameObject inventoryInstance = Instantiate(Inventory);
+        GameObject heartInstance = Instantiate(heart);
 
         textBoxManagerInstance.GetComponent<TextBoxManager>().player = playerInstance.GetComponent<PlayerMovement>();
         textBoxManagerInstance.GetComponent<TextBoxManager>().textBox = GameObject.FindGameObjectWithTag("textbox");
         textBoxManagerInstance.GetComponent<TextBoxManager>().theText = GameObject.FindGameObjectWithTag("text").GetComponent<Text>();
         textBoxManagerInstance.GetComponent<TextBoxManager>().InitTextBox();               
+
+        #region heart
+        Heart heartComponent = heartInstance.GetComponent<Heart>();
+        heartComponent.isNormalHeartRate = true;
+        heartComponent.playerStealth = player.GetComponent<StealthGameMode>();
+        #endregion
 
         #region inventory
 
