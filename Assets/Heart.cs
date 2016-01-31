@@ -9,20 +9,39 @@ public class Heart : MonoBehaviour {
     public bool showHeart1;
     public bool showHeart2;
     public StealthGameMode playerStealth;
+    public bool dead;
 
 	// Use this for initialization
 	void Start () {
         
-        heartBeatSpeed = 1;
-        heart1 = GameObject.Find("heart1");
-        heart2 = GameObject.Find("heart2");
+        heart1 = GameObject.Find("Heart 1");
+        heart2 = GameObject.Find("Heart 2");
+        if (isNormalHeartRate)
+        {
+            //decreasing the heart beat speed variable increases the speed that the heart beats.
+            heartBeatSpeed = 1;
+            StartCoroutine(HeartBeat());
+        }
+        else
+        {
+            heartBeatSpeed = 0.5f;
+        }
         
+   
     }
 	
 	// Update is called once per frame
-	void Update () {
-	    
+	IEnumerator HeartBeat() {
+        while (!dead)
+        {
+            yield return new WaitForSeconds(heartBeatSpeed * 1.5f);
+            ShowHeart1();
+            yield return new WaitForSeconds(heartBeatSpeed * 0.3f);
+            ShowHeart2();
+            Debug.Log(heartBeatSpeed);
+        }
 	}
+
 
     public void ShowHeart1()
     {
