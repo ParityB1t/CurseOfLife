@@ -54,9 +54,18 @@
      <Compile Include="Assets\Scripts\Inventory\Items_Common\ItemDB.cs" />
      <Compile Include="Assets\Scripts\Inventory\SlotLogic.cs" />
      <Compile Include="Assets\Scripts\Minimap\miniMapBoundary.cs" />
+     <Compile Include="Assets\Scripts\Text\ActivateTextAtLine.cs" />
      <Compile Include="Assets\Scripts\Text\TextBoxManager.cs" />
      <Compile Include="Assets\Scripts\Text\TextImporter.cs" />
+     <None Include="Assets\Text\Picking up holy water.txt" />
+     <None Include="Assets\Text\Forgotten Demon.txt" />
+     <None Include="Assets\Text\Forgotten Demon Aftermath.txt" />
+     <None Include="Assets\Text\Winged Demon.txt" />
      <None Include="Assets\Text\Opening Dialogue.txt" />
+     <None Include="Assets\Text\final scene.txt" />
+     <None Include="Assets\Text\PickingUpHolyWater.txt" />
+     <None Include="Assets\Text\Winged Demon Aftermath.txt" />
+     <None Include="Assets\Text\Sleeping Demon AfterMath.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
