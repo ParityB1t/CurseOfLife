@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Item
+public class Item : MonoBehaviour
 {
     
     public string Name;    
@@ -29,4 +29,17 @@ public class Item
 	{
 
 	}
+
+    public void ActivateItem(bool enemyInRange, GameObject enemy)
+    {
+        if (itemType == ItemType.holyWater)
+        {
+            if (enemy.name == "SleepBoss")
+            {
+                Destroy(enemy);
+                //Play Animation for sleep boss death                
+            }
+
+        }
+    }
 }
