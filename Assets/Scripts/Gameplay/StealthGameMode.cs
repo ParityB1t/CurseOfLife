@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
 public class StealthGameMode : MonoBehaviour
@@ -12,7 +13,7 @@ public class StealthGameMode : MonoBehaviour
 	void Update () {
 	    if (sleepBoss.looking && !hidden)
 	    {
-            Debug.Log("lose");
+            SceneManager.LoadScene(1);
 	        //fade to black, restart
 	    }
 	}

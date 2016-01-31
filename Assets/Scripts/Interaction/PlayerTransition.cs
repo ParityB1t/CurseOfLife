@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerTransition : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerTransition : MonoBehaviour
     private PlayerNodeState nodestate;
 
     void Start()
-    {
+    {        
         nodestate = GetComponent<PlayerNodeState>();
     }
 
@@ -62,7 +63,7 @@ public class PlayerTransition : MonoBehaviour
                 }
                 
             }
-
+            
             if (nodestate.isAtSleepBoss())
             {
                 nodestate.sleepBoss.active = true;

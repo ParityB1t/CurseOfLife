@@ -15,6 +15,8 @@ public class TextBoxManager : MonoBehaviour {
     public PlayerMovement player;
     public TextAsset textFile;
     public string[] textLines;
+    public GameObject Mortisis;
+    GameObject death;
 
 	// Use this for initialization
 	public void InitTextBox() {
@@ -53,11 +55,21 @@ public class TextBoxManager : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Return) | Input.GetKeyDown(KeyCode.Space))
             {
                 currentLine += 1;
+                if (currentLine == 4)
+                {
+                    death = Instantiate(Mortisis);
+                    death.transform.position = new Vector3(-4.5f,1.7f);
+                }
+                if (currentLine == 16)
+                {
+                    Destroy(death);
+                }
             }
 
             if (currentLine > endAtLine)
             {
                 //will hide the textbox once the dialogue is finished.
+                
                 DisableTextBox();
             }
         }
