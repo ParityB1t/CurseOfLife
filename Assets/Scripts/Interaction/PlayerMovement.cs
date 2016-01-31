@@ -3,7 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove;
-    private float speed = 0.1f;
+    private float speed = 0.05f;
 
 	void Start () {
 	
@@ -53,5 +53,10 @@ public class PlayerMovement : MonoBehaviour
                 transform.position -= new Vector3(0, speed, 0);
             }
         }
+    }
+
+    public float Speed()
+    {
+        return speed;
     }
 }

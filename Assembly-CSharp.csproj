@@ -45,9 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Common\MapStateMachine\PlayerNodeState.cs" />
      <Compile Include="Assets\Scripts\Common\engine.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Interaction\PlayerTransition.cs" />
      <Compile Include="Assets\Scripts\Inventory\InventoryLogic.cs" />
      <Compile Include="Assets\Scripts\Inventory\InventoryRenderer.cs" />
      <Compile Include="Assets\Scripts\Inventory\Items_Common\Item.cs" />
@@ -57,6 +59,8 @@
      <Compile Include="Assets\Scripts\Text\ActivateTextAtLine.cs" />
      <Compile Include="Assets\Scripts\Text\TextBoxManager.cs" />
      <Compile Include="Assets\Scripts\Text\TextImporter.cs" />
+     <Compile Include="Assets\SleepBossState.cs" />
+     <Compile Include="Assets\StealthGameMode.cs" />
      <None Include="Assets\Text\Picking up holy water.txt" />
      <None Include="Assets\Text\Forgotten Demon.txt" />
      <None Include="Assets\Text\Forgotten Demon Aftermath.txt" />
