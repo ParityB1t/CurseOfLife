@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Common\MapStateMachine\PlayerNodeState.cs" />
      <Compile Include="Assets\Scripts\Common\engine.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerMovement.cs" />
@@ -55,6 +56,8 @@
      <Compile Include="Assets\Scripts\Inventory\Items_Common\ItemDB.cs" />
      <Compile Include="Assets\Scripts\Inventory\SlotLogic.cs" />
      <Compile Include="Assets\Scripts\Minimap\miniMapBoundary.cs" />
+     <Compile Include="Assets\SleepBossState.cs" />
+     <Compile Include="Assets\StealthGameMode.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/Development/Unity/Unity-5.3.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

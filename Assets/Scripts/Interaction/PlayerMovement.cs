@@ -2,7 +2,7 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float speed = 0.1f;
+    private float speed = 0.05f;
 
 	void Start () {
 	
