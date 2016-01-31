@@ -32,10 +32,12 @@ public class Item : MonoBehaviour
 
     public void ActivateItem(bool enemyInRange, GameObject enemy)
     {
+        Debug.Log("item type = " + itemType);
         if (itemType == ItemType.holyWater)
         {
-            if (enemy.name == "SleepBoss")
+            if (enemy != null && enemy.name == "SleepBoss")
             {
+                Debug.Log("killed sleepy");
                 Destroy(enemy);
                 //Play Animation for sleep boss death                
             }

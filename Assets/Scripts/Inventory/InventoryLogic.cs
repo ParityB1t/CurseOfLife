@@ -5,7 +5,7 @@ public class InventoryLogic : MonoBehaviour
 {
     private const int inventorySize = 5;
     [HideInInspector] public Item[] PlayerItems = new Item[inventorySize];
-    private ItemDB itemDB;
+    public ItemDB itemDB;
 
 #region monobehaviour
 
@@ -44,10 +44,14 @@ public class InventoryLogic : MonoBehaviour
     {
         bool canPlaced = true;
         
+        Debug.Log("placing for " + itemDB.ItemDatabase.Count);
+
         for (int i = 0; i < itemDB.ItemDatabase.Count; i++)
         {
+            Debug.Log("loking at " + item);
             if (itemDB.ItemDatabase[i].itemType == item)
             {                
+                Debug.Log(item);
                 Item itemToAdd = itemDB.ItemDatabase[i];                
                 canPlaced = FindEmptySlotToPlace(itemToAdd);
                 break;

@@ -30,6 +30,7 @@ public class SlotLogic : MonoBehaviour, IPointerEnterHandler//, IPointerExitHand
 
         if (itemInSlot.ItemImage != null)
         {
+            Debug.Log("add image");
             itemImage.enabled = true;
             itemImage.sprite = itemInSlot.ItemImage;
         }
@@ -54,7 +55,7 @@ public class SlotLogic : MonoBehaviour, IPointerEnterHandler//, IPointerExitHand
     {
         if (itemInSlot.Name != null)
         {
-            Debug.Log(itemInSlot.Name);
+            //Debug.Log(itemInSlot.Name);
         }
     }
 }

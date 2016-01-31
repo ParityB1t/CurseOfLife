@@ -21,6 +21,7 @@ public class InventoryRenderer : MonoBehaviour
 	
 	void Start ()
 	{
+        Debug.Log("generate database");
         inventoryLogic.SetUpDatabase(itemImages);
         gapBetweenSlots = InventorySpace.GetComponent<RectTransform>().rect.height*2.5f;
         RenderInventory();

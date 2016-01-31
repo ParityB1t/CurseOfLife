@@ -29,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
 	    if (Input.GetKeyDown(KeyCode.E) && canPickUp)
 	    {
+            Inventory.SetActive(true);            
 	        inventoryLogic.AddItem(itemInRange.type);
             Destroy(itemInRange.gameObject);
 	        canPickUp = false;
@@ -38,6 +39,7 @@ public class PlayerInteraction : MonoBehaviour
 	    {
 	        if (Inventory.activeSelf)
 	        {
+                Debug.Log("using item " + inventoryLogic.PlayerItems[itemSelected].Name);
 	            inventoryLogic.PlayerItems[itemSelected].ActivateItem(enemyInRange, enemy);
 	        }
 	    }

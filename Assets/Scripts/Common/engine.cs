@@ -24,7 +24,7 @@ public class engine : MonoBehaviour {
         #region environment
 
 	    Instantiate(worldMap);
-	    Instantiate(Walls, new Vector3(0, 12), Walls.transform.rotation);
+	    Instantiate(Walls, new Vector3(0, 11), Walls.transform.rotation);
 	    Instantiate(Initialitems);
 
         #endregion
@@ -40,22 +40,29 @@ public class engine : MonoBehaviour {
        
         playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
         
-        inventoryInstance.SetActive(false);
+        StartCoroutine(WaitTillGenerateDatabase(inventoryInstance.GetComponent<InventoryLogic>()));
 
         #endregion
 
         #region Bosses
 
         GameObject sleepBossInstance = Instantiate(sleepBoss);
-        sleepBossInstance.transform.position = new Vector3(0,14);
+	    sleepBossInstance.name = "SleepBoss";
+        sleepBossInstance.transform.position = new Vector3(0,13);
         SleepBossState sleepBossState = sleepBossInstance.GetComponent<SleepBossState>();
 	    playerInstance.GetComponent<PlayerNodeState>().sleepBoss = sleepBossState;
 	    playerInstance.GetComponent<StealthGameMode>().sleepBoss = sleepBossState;
 	    #endregion
 	}
 
+    IEnumerator WaitTillGenerateDatabase(InventoryLogic inventory)
+    {
+        while (inventory.itemDB.ItemDatabase.Count < 5)
+        {
+            yield return null;
+        }
 
-    void Update () {
-        	    
-	}
+        inventory.gameObject.SetActive(false);
+    }
+    
 }
