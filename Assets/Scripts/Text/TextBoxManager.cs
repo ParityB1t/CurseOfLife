@@ -20,6 +20,7 @@ public class TextBoxManager : MonoBehaviour {
 
 	// Use this for initialization
 	public void InitTextBox() {
+
         if (textFile != null)
         {
             //split the text in the text file by line.
@@ -45,8 +46,6 @@ public class TextBoxManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-
         if (isActive) //
         {
             theText.text = textLines[currentLine];
@@ -58,7 +57,7 @@ public class TextBoxManager : MonoBehaviour {
                 if (currentLine == 4)
                 {
                     death = Instantiate(Mortisis);
-                    death.transform.position = new Vector3(-4.5f,1.7f);
+                    death.transform.position = new Vector3(-2.1f,-0.5f);
                 }
                 if (currentLine == 16)
                 {
@@ -80,10 +79,9 @@ public class TextBoxManager : MonoBehaviour {
     {
         textBox.SetActive(true);
         isActive = true;
-        if (stopPlayerMovement)
-        {
-            player.canMove = false;
-        }
+        
+        player.canMove = false;
+        
     }
 
     public void DisableTextBox()

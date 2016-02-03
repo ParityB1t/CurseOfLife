@@ -15,6 +15,8 @@ public class PlayerTransition2 : MonoBehaviour
 
     private PlayerNodeState nodestate;
 
+    private engine engine;
+
     void Start()
     {
         nodestate = GetComponent<PlayerNodeState>();
@@ -28,27 +30,24 @@ public class PlayerTransition2 : MonoBehaviour
 
             GetComponent<PlayerMovement>().enabled = false;
 
-            if (col.gameObject.name == top)
+            
+            if (col.gameObject.name == bottom)
             {
-                if (nodestate.Y() > 0)
-                {
-                    nodestate.MoveUp();
-                    StartCoroutine(moveCamera(Vector3.up));
+                if (nodestate.x == 1)
+                {                    
+                    
                 }
 
-            }
-            else if (col.gameObject.name == bottom)
-            {
-                if (nodestate.Y() < nodestate.getMapSize())
+                if (nodestate.y < nodestate.getMapSize())
                 {
                     nodestate.MoveDown();
                     StartCoroutine(moveCamera(Vector3.down));
-                }
-                SceneManager.LoadScene(1);
+                }               
+                                
             }
             else if (col.gameObject.name == left)
             {
-                if (nodestate.X() > 0)
+                if (nodestate.x > 0)
                 {
                     nodestate.MoveLeft();
                     StartCoroutine(moveCamera(Vector3.left));
@@ -57,15 +56,12 @@ public class PlayerTransition2 : MonoBehaviour
             }
             else if (col.gameObject.name == right)
             {
-                if (nodestate.X() < nodestate.getMapSize())
+                if (nodestate.x < nodestate.getMapSize())
                 {
                     nodestate.MoveRight();
                     StartCoroutine(moveCamera(Vector3.right));
                 }
-
-            }
-
-            
+            }            
         }
     }
 

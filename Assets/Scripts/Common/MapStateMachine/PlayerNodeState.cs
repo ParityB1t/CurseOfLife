@@ -2,19 +2,13 @@
 
 public class PlayerNodeState : MonoBehaviour
 {
-    private int x, y;
+    public int x, y;
     const int mapSize = 5;
 
     //public FlyingNodeState flyNode;
 
     public SleepBossState sleepBoss;
-    public bool inSleepBossLevel;
-
-    void Start()
-    {
-        x = 2;
-        y = 2;
-    }
+    public bool inSleepBossLevel;    
 
     public void MoveLeft()
     {
@@ -50,16 +44,7 @@ public class PlayerNodeState : MonoBehaviour
 
         return false;
     }
-
-    public int X()
-    {
-        return x;
-    }
-
-    public int Y()
-    {
-        return y;
-    }
+   
 
     public int getMapSize()
     {

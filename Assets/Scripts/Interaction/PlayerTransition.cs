@@ -29,7 +29,7 @@ public class PlayerTransition : MonoBehaviour
 
             if (col.gameObject.name == top)
             {
-                if (nodestate.Y() > 0)
+                if (nodestate.y > 0)
                 {
                     nodestate.MoveUp();
                     StartCoroutine(moveCamera(Vector3.up));
@@ -38,7 +38,7 @@ public class PlayerTransition : MonoBehaviour
             }
             else if (col.gameObject.name == bottom)
             {
-                if (nodestate.Y() < nodestate.getMapSize())
+                if (nodestate.y < nodestate.getMapSize())
                 {
                     nodestate.MoveDown();
                     StartCoroutine(moveCamera(Vector3.down));
@@ -47,7 +47,7 @@ public class PlayerTransition : MonoBehaviour
             }
             else if (col.gameObject.name == left)
             {
-                if (nodestate.X() > 0)
+                if (nodestate.x > 0)
                 {
                     nodestate.MoveLeft();
                     StartCoroutine(moveCamera(Vector3.left));
@@ -56,7 +56,7 @@ public class PlayerTransition : MonoBehaviour
             }
             else if (col.gameObject.name == right)
             {
-                if (nodestate.X() < nodestate.getMapSize())
+                if (nodestate.x < nodestate.getMapSize())
                 {
                     nodestate.MoveRight();
                     StartCoroutine(moveCamera(Vector3.right));
