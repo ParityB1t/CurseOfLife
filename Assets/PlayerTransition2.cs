@@ -29,21 +29,14 @@ public class PlayerTransition2 : MonoBehaviour
         {
 
             GetComponent<PlayerMovement>().enabled = false;
-
             
             if (col.gameObject.name == bottom)
             {
                 if (nodestate.x == 1)
                 {                    
-                    
-                }
-
-                if (nodestate.y < nodestate.getMapSize())
-                {
-                    nodestate.MoveDown();
-                    StartCoroutine(moveCamera(Vector3.down));
-                }               
-                                
+                    SceneManager.LoadScene(2);                    
+                    StartCoroutine(WaitTillGenerate());                    
+                }                                
             }
             else if (col.gameObject.name == left)
             {
@@ -63,6 +56,15 @@ public class PlayerTransition2 : MonoBehaviour
                 }
             }            
         }
+    }
+
+    private IEnumerator WaitTillGenerate()
+    {
+        yield return new WaitForSeconds(0);
+        Camera.main.transform.position = new Vector3(0, 0, -10);
+        engine.LoadWorld();
+        Destroy(gameObject);
+
     }
 
 
@@ -92,5 +94,10 @@ public class PlayerTransition2 : MonoBehaviour
             }
 
             GetComponent<PlayerMovement>().enabled = true;
-        }    
+      }
+
+    public void setEngine(engine engine)
+    {
+        this.engine = engine;
+    } 
 }

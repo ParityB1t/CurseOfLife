@@ -39,7 +39,7 @@ public class Item : MonoBehaviour
             {
                 Debug.Log("killed sleepy");
                 Destroy(enemy);
-                //Play Animation for sleep boss death                
+                GameObject.FindGameObjectWithTag("engine").GetComponent<engine>().defeatSleep();
             }
 
         }

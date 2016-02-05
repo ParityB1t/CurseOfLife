@@ -12,10 +12,11 @@ public class Heart : MonoBehaviour {
     public bool dead;
 
 	// Use this for initialization
-	void Start () {
-        
-        heart1 = GameObject.Find("Heart 1");
-        heart2 = GameObject.Find("Heart 2");
+	void Start ()
+	{
+
+	    heart1 = transform.GetChild(0).gameObject;
+        heart2 = transform.GetChild(1).gameObject; 
         if (isNormalHeartRate)
         {
             //decreasing the heart beat speed variable increases the speed that the heart beats.

@@ -9,6 +9,9 @@ public class PlayerTransition : MonoBehaviour
     private string bottom = "BottomBound";
     private string left = "LeftBound";
     private string right = "RightBound";
+    private string entrance = "Entrance";
+
+    private engine engine;
 
     private Vector3 sceneDimension = new Vector3(8,6);
 
@@ -76,6 +79,11 @@ public class PlayerTransition : MonoBehaviour
                 GetComponent<StealthGameMode>().enabled = false;
             }
         }
+        else if (col.gameObject.name == entrance)
+        {                        
+            SceneManager.LoadScene(1);
+            engine.LoadHouse();
+        }
     }
 
     IEnumerator moveCamera(Vector3 direction)
@@ -102,5 +110,10 @@ public class PlayerTransition : MonoBehaviour
         }
 
         GetComponent<PlayerMovement>().enabled = true;
+    }
+
+    public void setEngine(engine engine)
+    {
+        this.engine = engine;
     }
 }

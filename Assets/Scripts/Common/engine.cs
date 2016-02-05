@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,7 +15,11 @@ public class engine : MonoBehaviour {
 
     //UI
     public GameObject Canvas;
+    private GameObject canvas;
     public GameObject EventSystem;
+
+    //inventory
+    private GameObject inventoryInstance;
     public GameObject Inventory;
 
     public GameObject TextBoxManager;    
@@ -24,12 +29,17 @@ public class engine : MonoBehaviour {
     public GameObject worldMap;
     public GameObject Walls;
     public GameObject Initialitems;
-        
+            
+
     //heart
     public GameObject heart;
+    private GameObject heartInstance;
 
     // Bosses
     public GameObject sleepBoss;
+
+
+    private bool defeatedSleep;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +48,7 @@ public class engine : MonoBehaviour {
 
         #region UI
 
-        GameObject canvas = Instantiate(Canvas);
+        canvas = Instantiate(Canvas);
         GameObject eventSys = Instantiate(EventSystem);
 
         DontDestroyOnLoad(canvas);
@@ -48,47 +58,14 @@ public class engine : MonoBehaviour {
 
         BeginGame(canvas);
         
-        /*GameObject playerInstance = Instantiate(player);
-        playerInstance.transform.position = new Vector3(0,-2.8f);
         
-        
-	    GameObject inventoryInstance = Instantiate(Inventory);
-        GameObject heartInstance = Instantiate(heart);
-	            
-        #region heart
-        Heart heartComponent = heartInstance.GetComponent<Heart>();
-        heartComponent.isNormalHeartRate = true;
-        heartComponent.playerStealth = player.GetComponent<StealthGameMode>();
-        #endregion
-                
-
-        #region inventory
-
-        inventoryInstance.transform.SetParent(canvas.transform);
-	    inventoryInstance.transform.localScale = Vector3.one;
-        inventoryInstance.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100,inventoryInstance.transform.position.y);
-       
-        playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
-        
-        StartCoroutine(WaitTillGenerateDatabase(inventoryInstance.GetComponent<InventoryLogic>()));
-
-        #endregion
-
-        #region Bosses
-
-        GameObject sleepBossInstance = Instantiate(sleepBoss);
-	    sleepBossInstance.name = "SleepBoss";
-        sleepBossInstance.transform.position = new Vector3(0,13);
-        SleepBossState sleepBossState = sleepBossInstance.GetComponent<SleepBossState>();
-	    playerInstance.GetComponent<PlayerNodeState>().sleepBoss = sleepBossState;
-	    playerInstance.GetComponent<StealthGameMode>().sleepBoss = sleepBossState;
-	    #endregion*/
 	}
 
     void BeginGame(GameObject canvas)
     {
         
         GameObject playerInstance = Instantiate(playerInHouse);
+        playerInstance.GetComponent<PlayerTransition2>().setEngine(this);
         PlayerNodeState houseState = playerInstance.GetComponent<PlayerNodeState>();
 
         houseState.x = 0;
@@ -112,21 +89,84 @@ public class engine : MonoBehaviour {
     }
     
 
-    private void LoadWorld()
-    {
-        #region environment
+    public void LoadWorld()
+    {        
 
         Instantiate(worldMap);
         Instantiate(Walls, new Vector3(0, 11), Walls.transform.rotation);
 
-        if (!alreadyLoaded)
-        {
-            Instantiate(Initialitems);
-            alreadyLoaded = true;
-        }
-            
+        GameObject playerInstance = Instantiate(player);
+        playerInstance.transform.position = new Vector3(0, -2f);
+        playerInstance.GetComponent<PlayerNodeState>().x = 2;
+        playerInstance.GetComponent<PlayerNodeState>().y = 2;
+        playerInstance.GetComponent<PlayerTransition>().setEngine(this);
 
+        GameObject items = Instantiate(Initialitems);
+
+        DontDestroyOnLoad(items);
+
+        if (!alreadyLoaded)
+        {            
+
+            inventoryInstance = Instantiate(Inventory);
+
+            #region inventory
+
+            inventoryInstance.transform.SetParent(canvas.transform);
+            inventoryInstance.transform.localScale = Vector3.one;
+            inventoryInstance.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100, inventoryInstance.transform.position.y);
+
+            playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
+
+            StartCoroutine(WaitTillGenerateDatabase(inventoryInstance.GetComponent<InventoryLogic>()));
+
+            alreadyLoaded = true;
+            
+            DontDestroyOnLoad(inventoryInstance);
+
+            #endregion
+        }
+
+        #region heart
+
+        heartInstance = Instantiate(heart);
+        heartInstance.transform.SetParent(canvas.transform);
+        heartInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -70);
+        Heart heartComponent = heartInstance.GetComponent<Heart>();
+        heartComponent.isNormalHeartRate = true;
+        heartComponent.playerStealth = player.GetComponent<StealthGameMode>();
+        
         #endregion
+
+        #region Bosses
+
+        if (!defeatedSleep)
+        {
+            GameObject sleepBossInstance = Instantiate(sleepBoss);
+            sleepBossInstance.name = "SleepBoss";
+            sleepBossInstance.transform.position = new Vector3(0, 13);
+            SleepBossState sleepBossState = sleepBossInstance.GetComponent<SleepBossState>();
+            playerInstance.GetComponent<PlayerNodeState>().sleepBoss = sleepBossState;
+            playerInstance.GetComponent<StealthGameMode>().sleepBoss = sleepBossState;            
+        }
+
+        #endregion                  
+    }
+
+    public void LoadHouse()
+    {
+        GameObject playerInstance = Instantiate(playerInHouse);
+        playerInstance.GetComponent<PlayerTransition2>().setEngine(this);
+        playerInstance.transform.position = new Vector3(8.3f,-1.3f);
+        playerInstance.GetComponent<SpriteRenderer>().sprite = playerInstance.GetComponent<PlayerMovement>().back;
+        PlayerNodeState houseState = playerInstance.GetComponent<PlayerNodeState>();
+
+        houseState.x = 1;
+        houseState.y = 0;
+
+        Camera.main.transform.position = new Vector3(8,0,-10);
+
+        DontDestroyOnLoad(playerInstance);
     }
 
     IEnumerator WaitTillGenerateDatabase(InventoryLogic inventory)
@@ -137,6 +177,11 @@ public class engine : MonoBehaviour {
         }
 
         inventory.gameObject.SetActive(false);
+    }
+
+    public void defeatSleep()
+    {
+        defeatedSleep = true;
     }
     
 }
