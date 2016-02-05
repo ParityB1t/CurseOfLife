@@ -41,10 +41,14 @@ public class engine : MonoBehaviour {
 
     private bool defeatedSleep;
 
+    public static engine Instance;
+    
 	// Use this for initialization
 	void Start () {
 
         DontDestroyOnLoad(gameObject);
+
+	    Instance = this;
 
         #region UI
 
@@ -64,8 +68,7 @@ public class engine : MonoBehaviour {
     void BeginGame(GameObject canvas)
     {
         
-        GameObject playerInstance = Instantiate(playerInHouse);
-        playerInstance.GetComponent<PlayerTransition2>().setEngine(this);
+        GameObject playerInstance = Instantiate(playerInHouse);        
         PlayerNodeState houseState = playerInstance.GetComponent<PlayerNodeState>();
 
         houseState.x = 0;
@@ -98,15 +101,15 @@ public class engine : MonoBehaviour {
         GameObject playerInstance = Instantiate(player);
         playerInstance.transform.position = new Vector3(0, -2f);
         playerInstance.GetComponent<PlayerNodeState>().x = 2;
-        playerInstance.GetComponent<PlayerNodeState>().y = 2;
-        playerInstance.GetComponent<PlayerTransition>().setEngine(this);
+        playerInstance.GetComponent<PlayerNodeState>().y = 2;                
 
-        GameObject items = Instantiate(Initialitems);
 
-        DontDestroyOnLoad(items);
 
         if (!alreadyLoaded)
-        {            
+        {
+
+            GameObject items = Instantiate(Initialitems);
+            DontDestroyOnLoad(items);
 
             inventoryInstance = Instantiate(Inventory);
 
@@ -155,8 +158,7 @@ public class engine : MonoBehaviour {
 
     public void LoadHouse()
     {
-        GameObject playerInstance = Instantiate(playerInHouse);
-        playerInstance.GetComponent<PlayerTransition2>().setEngine(this);
+        GameObject playerInstance = Instantiate(playerInHouse);        
         playerInstance.transform.position = new Vector3(8.3f,-1.3f);
         playerInstance.GetComponent<SpriteRenderer>().sprite = playerInstance.GetComponent<PlayerMovement>().back;
         PlayerNodeState houseState = playerInstance.GetComponent<PlayerNodeState>();
@@ -164,7 +166,7 @@ public class engine : MonoBehaviour {
         houseState.x = 1;
         houseState.y = 0;
 
-        Camera.main.transform.position = new Vector3(8,0,-10);
+        transform.position = new Vector3(8,0,-10);
 
         DontDestroyOnLoad(playerInstance);
     }

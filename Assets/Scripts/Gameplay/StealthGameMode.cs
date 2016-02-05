@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Diagnostics;
 using UnityEngine.SceneManagement;
-using Debug = UnityEngine.Debug;
+
 
 public class StealthGameMode : MonoBehaviour
 {
 
     public SleepBossState sleepBoss;
-    public bool hidden;		
+    public bool hidden = true;
 	
 	void Update () {
 	    if (sleepBoss.looking && !hidden)
-	    {
+	    {	        
+            engine.Instance.LoadHouse();	        
             SceneManager.LoadScene(1);
-	        //fade to black, restart
 	    }
 	}
 

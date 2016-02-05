@@ -11,8 +11,6 @@ public class PlayerTransition : MonoBehaviour
     private string right = "RightBound";
     private string entrance = "Entrance";
 
-    private engine engine;
-
     private Vector3 sceneDimension = new Vector3(8,6);
 
     private PlayerNodeState nodestate;
@@ -82,7 +80,7 @@ public class PlayerTransition : MonoBehaviour
         else if (col.gameObject.name == entrance)
         {                        
             SceneManager.LoadScene(1);
-            engine.LoadHouse();
+            engine.Instance.LoadHouse();
         }
     }
 
@@ -112,8 +110,4 @@ public class PlayerTransition : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = true;
     }
 
-    public void setEngine(engine engine)
-    {
-        this.engine = engine;
-    }
 }

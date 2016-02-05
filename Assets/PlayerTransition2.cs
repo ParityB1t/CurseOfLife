@@ -15,8 +15,6 @@ public class PlayerTransition2 : MonoBehaviour
 
     private PlayerNodeState nodestate;
 
-    private engine engine;
-
     void Start()
     {
         nodestate = GetComponent<PlayerNodeState>();
@@ -62,9 +60,8 @@ public class PlayerTransition2 : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         Camera.main.transform.position = new Vector3(0, 0, -10);
-        engine.LoadWorld();
+        engine.Instance.LoadWorld();
         Destroy(gameObject);
-
     }
 
 
@@ -96,8 +93,5 @@ public class PlayerTransition2 : MonoBehaviour
             GetComponent<PlayerMovement>().enabled = true;
       }
 
-    public void setEngine(engine engine)
-    {
-        this.engine = engine;
-    } 
+
 }
