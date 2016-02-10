@@ -37,9 +37,7 @@ public class engine : MonoBehaviour {
 
     // Bosses
     public GameObject sleepBoss;
-
-
-    private bool defeatedSleep;
+    private bool defeatedSleep;    
 
     public static engine Instance;
     
@@ -166,7 +164,7 @@ public class engine : MonoBehaviour {
         houseState.x = 1;
         houseState.y = 0;
 
-        transform.position = new Vector3(8,0,-10);
+        transform.position = new Vector3(8,0,-10);        
 
         DontDestroyOnLoad(playerInstance);
     }

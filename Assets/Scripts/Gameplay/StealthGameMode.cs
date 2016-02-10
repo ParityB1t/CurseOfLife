@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -10,12 +11,13 @@ public class StealthGameMode : MonoBehaviour
 	
 	void Update () {
 	    if (sleepBoss.looking && !hidden)
-	    {	        
-            engine.Instance.LoadHouse();	        
-            SceneManager.LoadScene(1);
+	    {
+            hidden = true;
+            engine.Instance.LoadHouse();
+            SceneManager.LoadScene(1);            
 	    }
 	}
-
+        
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.tag != "boss")

@@ -18,12 +18,20 @@ public class SleepBossState : MonoBehaviour
 
     IEnumerator SleepWakeUpRoutine()
     {
+        const float lookTime = 4.5f;
+        
         while (active)
         {
             yield return new WaitForSeconds(1.2f);
-            looking = true;
+            float startTime = Time.time;
+
             GetComponent<SpriteRenderer>().sprite = awake;
-            yield return new WaitForSeconds(4.5f);
+
+            while (Time.time - startTime < lookTime)
+            {
+                yield return null;
+            }
+            
             GetComponent<SpriteRenderer>().sprite = sleep;
             looking = false;
         }
