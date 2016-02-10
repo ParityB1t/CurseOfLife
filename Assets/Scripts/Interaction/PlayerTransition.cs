@@ -14,6 +14,7 @@ public class PlayerTransition : MonoBehaviour
     private Vector3 sceneDimension = new Vector3(8,6);
 
     private PlayerNodeState nodestate;
+    public Heart heart;
 
     void Start()
     {        
@@ -67,6 +68,7 @@ public class PlayerTransition : MonoBehaviour
             
             if (nodestate.isAtSleepBoss())
             {
+                heart.heartBeatSpeed = 0.5f;
                 nodestate.sleepBoss.active = true;
                 nodestate.sleepBoss.ActivateStealthLevel();
                 GetComponent<StealthGameMode>().enabled = true;

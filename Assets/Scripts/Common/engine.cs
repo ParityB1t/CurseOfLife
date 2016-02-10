@@ -115,9 +115,7 @@ public class engine : MonoBehaviour {
 
             inventoryInstance.transform.SetParent(canvas.transform);
             inventoryInstance.transform.localScale = Vector3.one;
-            inventoryInstance.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100, inventoryInstance.transform.position.y);
-
-            playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
+            inventoryInstance.GetComponent<RectTransform>().anchoredPosition = new Vector3(-100, inventoryInstance.transform.position.y);            
 
             StartCoroutine(WaitTillGenerateDatabase(inventoryInstance.GetComponent<InventoryLogic>()));
 
@@ -128,6 +126,8 @@ public class engine : MonoBehaviour {
             #endregion
         }
 
+        playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
+
         #region heart
 
         heartInstance = Instantiate(heart);
@@ -135,8 +135,9 @@ public class engine : MonoBehaviour {
         heartInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -70);
         Heart heartComponent = heartInstance.GetComponent<Heart>();
         heartComponent.isNormalHeartRate = true;
-        heartComponent.playerStealth = player.GetComponent<StealthGameMode>();
-        
+        playerInstance.GetComponent<StealthGameMode>().heart = heartComponent;
+        playerInstance.GetComponent<PlayerTransition>().heart = heartComponent;
+
         #endregion
 
         #region Bosses

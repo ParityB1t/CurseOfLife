@@ -7,8 +7,7 @@ public class Heart : MonoBehaviour {
     public GameObject heart1;
     public GameObject heart2;
     public bool showHeart1;
-    public bool showHeart2;
-    public StealthGameMode playerStealth;
+    public bool showHeart2;    
     public bool dead;
 
 	// Use this for initialization
@@ -23,12 +22,6 @@ public class Heart : MonoBehaviour {
             heartBeatSpeed = 1;
             StartCoroutine(HeartBeat());
         }
-        else
-        {
-            heartBeatSpeed = 0.5f;
-        }
-        
-   
     }
 	
 	// Update is called once per frame

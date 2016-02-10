@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,35 +9,37 @@ public class StealthGameMode : MonoBehaviour
 
     public SleepBossState sleepBoss;
     public bool hidden = true;
-	
-	void Update () {
-	    if (sleepBoss.looking && !hidden)
-	    {
-            hidden = true;
-            engine.Instance.LoadHouse();
-            SceneManager.LoadScene(1);            
-	    }
-	}
-        
-    void OnTriggerStay2D(Collider2D col)
+
+    public Heart heart;
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag != "boss")
+        if (col.tag == "vision")
         {
-            if (!hidden)
-            {
-                hidden = true;
-            }
+
+            StartCoroutine(DeathSequence());
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    private IEnumerator DeathSequence()
     {
-        if (col.tag != "boss")
+        heart.heartBeatSpeed = 0.1f;
+        GetComponent<PlayerMovement>().enabled = false;
+
+        yield return new WaitForSeconds(1f);
+        float alpha = 1f;
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+        while (alpha > 0)
         {
-            if (hidden)
-            {
-                hidden = false;
-            }
+            sprite.color = new Color(1,1,1,alpha);
+            alpha += -.01f;
+
+            yield return null;
         }
+
+        heart.heartBeatSpeed = 1f;
+        engine.Instance.LoadHouse();
+        SceneManager.LoadScene(1);
     }
 }

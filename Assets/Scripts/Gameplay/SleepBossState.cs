@@ -8,29 +8,33 @@ public class SleepBossState : MonoBehaviour
     [HideInInspector] public bool looking = false;
 
     public Sprite sleep;
-    public Sprite awake;    
+    public Sprite awake;
+
+    private GameObject vision;
+
+    void Start()
+    {
+        vision = transform.GetChild(0).gameObject;
+        vision.SetActive(false);
+    }
 	
 
     public void ActivateStealthLevel()
-    {
+    {        
         wakeUpRoutine = StartCoroutine(SleepWakeUpRoutine());
     }
 
     IEnumerator SleepWakeUpRoutine()
-    {
-        const float lookTime = 4.5f;
-        
+    {        
         while (active)
         {
-            yield return new WaitForSeconds(1.2f);
-            float startTime = Time.time;
+            
+            yield return new WaitForSeconds(1.2f);            
 
             GetComponent<SpriteRenderer>().sprite = awake;
-
-            while (Time.time - startTime < lookTime)
-            {
-                yield return null;
-            }
+            vision.SetActive(true);
+            
+            yield return new WaitForSeconds(4.5f);
             
             GetComponent<SpriteRenderer>().sprite = sleep;
             looking = false;
