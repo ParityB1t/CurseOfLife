@@ -34,6 +34,7 @@ public class engine : MonoBehaviour {
     //heart
     public GameObject heart;
     private GameObject heartInstance;
+    private Heart heartComponent;
 
     // Bosses
     public GameObject sleepBoss;
@@ -101,8 +102,6 @@ public class engine : MonoBehaviour {
         playerInstance.GetComponent<PlayerNodeState>().x = 2;
         playerInstance.GetComponent<PlayerNodeState>().y = 2;                
 
-
-
         if (!alreadyLoaded)
         {
 
@@ -124,22 +123,22 @@ public class engine : MonoBehaviour {
             DontDestroyOnLoad(inventoryInstance);
 
             #endregion
+
+            #region heart
+            heartInstance = Instantiate(heart);
+            heartInstance.transform.SetParent(canvas.transform);
+            heartInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -70);
+            heartComponent = heartInstance.GetComponent<Heart>();
+            heartComponent.isNormalHeartRate = true;
+            #endregion
         }
 
-        playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
-
-        #region heart
-
-        heartInstance = Instantiate(heart);
-        heartInstance.transform.SetParent(canvas.transform);
-        heartInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(70, -70);
-        Heart heartComponent = heartInstance.GetComponent<Heart>();
-        heartComponent.isNormalHeartRate = true;
         playerInstance.GetComponent<StealthGameMode>().heart = heartComponent;
         playerInstance.GetComponent<PlayerTransition>().heart = heartComponent;
 
-        #endregion
+        playerInstance.GetComponent<PlayerInteraction>().InitInventory(inventoryInstance);
 
+        
         #region Bosses
 
         if (!defeatedSleep)
