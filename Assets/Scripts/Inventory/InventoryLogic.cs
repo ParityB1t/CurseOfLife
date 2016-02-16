@@ -44,11 +44,9 @@ public class InventoryLogic : MonoBehaviour
     {
         bool canPlaced = true;
         
-        Debug.Log("placing for " + itemDB.ItemDatabase.Count);
-
+        
         for (int i = 0; i < itemDB.ItemDatabase.Count; i++)
-        {
-            Debug.Log("loking at " + item);
+        {        
             if (itemDB.ItemDatabase[i].itemType == item)
             {                
                 Debug.Log(item);
@@ -73,6 +71,7 @@ public class InventoryLogic : MonoBehaviour
                 PlayerItems[count] = item;                
                 transform.GetChild(count).GetComponent<SlotLogic>().UpdateSlot();
                 placed = true;
+                Debug.Log("placed item");
             }
             else
             {

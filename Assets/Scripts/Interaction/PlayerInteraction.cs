@@ -11,7 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     private bool enemyInRange;
     public InventoryLogic inventoryLogic;
     private GameObject enemy;
-
+    
     public void InitInventory(GameObject InventoryObject)
     {
         Inventory = InventoryObject;
@@ -37,9 +37,11 @@ public class PlayerInteraction : MonoBehaviour
 	    if (Input.GetKeyDown(KeyCode.F))
 	    {
 	        if (Inventory.activeSelf)
-	        {
-                Debug.Log("using item " + inventoryLogic.PlayerItems[itemSelected].Name);
+	        {                
+                Debug.Log(enemy);
+                Debug.Log(inventoryLogic);
 	            inventoryLogic.PlayerItems[itemSelected].ActivateItem(enemyInRange, enemy);
+
 	        }
 	    }
 	}
@@ -90,8 +92,7 @@ public class PlayerInteraction : MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.tag == "item")
-        {
-            Debug.Log("can't pick up");
+        {            
             canPickUp = false;
             itemInRange = null;
         }

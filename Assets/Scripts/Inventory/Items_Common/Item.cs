@@ -31,15 +31,14 @@ public class Item : MonoBehaviour
 	}
 
     public void ActivateItem(bool enemyInRange, GameObject enemy)
-    {
-        Debug.Log("item type = " + itemType);
+    {        
         if (itemType == ItemType.holyWater)
         {
             if (enemy != null && enemy.name == "SleepBoss")
-            {
-                Debug.Log("killed sleepy");
-                Destroy(enemy);
-                GameObject.FindGameObjectWithTag("engine").GetComponent<engine>().defeatSleep();
+            {                
+                enemy.GetComponent<ItemDrop>().dropItem();
+                Destroy(enemy);                
+                Camera.main.GetComponent<engine>().defeatSleep();
             }
 
         }

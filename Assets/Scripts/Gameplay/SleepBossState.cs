@@ -5,7 +5,7 @@ public class SleepBossState : MonoBehaviour
 {
     private Coroutine wakeUpRoutine;
     [HideInInspector] public bool active;
-    [HideInInspector] public bool looking = false;
+    
 
     public Sprite sleep;
     public Sprite awake;
@@ -37,7 +37,8 @@ public class SleepBossState : MonoBehaviour
             yield return new WaitForSeconds(4.5f);
             
             GetComponent<SpriteRenderer>().sprite = sleep;
-            looking = false;
+            vision.SetActive(false);
+            
         }
     }
 }

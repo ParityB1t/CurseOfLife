@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Heart.cs" />
+     <Compile Include="Assets\ItemDrop.cs" />
      <Compile Include="Assets\PlayerTransition2.cs" />
      <Compile Include="Assets\Scripts\Common\MapStateMachine\PlayerNodeState.cs" />
      <Compile Include="Assets\Scripts\Common\engine.cs" />
